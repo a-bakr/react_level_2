@@ -1,13 +1,31 @@
+$lightGreen: #7ed56f;
+$mediumGreen: #55c57a;
+$darkGreen: #28b485;
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  padding: 30px;
+  font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, #7ed56fcc, #28b485cc),
+    url(./assets/images/hero.jpg);
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  position: relative;
+}
+
+.log-box {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+
+.log {
+  height: 3px;
 }
