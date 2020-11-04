@@ -10,13 +10,15 @@ const App = () => {
   const theme = createMuiTheme({
     palette: {
       type: darkOrLight(),
-      primary: {},
+      primary: {
+        main: isDark ? '#333' : '#1976D2',
+      },
     },
   });
 
   return (
     <ThemeProvider theme={theme}>
-      <Header isDarkTheme={() => setIsDark(!isDark)} />
+      <Header isdark={isDark} isDarkTheme={() => setIsDark(!isDark)} />
       <Body />
     </ThemeProvider>
   );

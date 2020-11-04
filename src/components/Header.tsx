@@ -4,14 +4,17 @@ import {
   createStyles,
   IconButton,
   makeStyles,
-  Switch,
   Theme,
   Toolbar,
   Typography,
 } from '@material-ui/core';
-import { Menu } from '@material-ui/icons';
-import { useTheme } from '@material-ui/styles';
+import { Brightness4, Brightness7, Menu } from '@material-ui/icons';
 import React from 'react';
+
+interface props {
+  isDarkTheme: any;
+  isdark: any;
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -27,14 +30,8 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const Header = (props: {
-  isDarkTheme:
-    | ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
-    | undefined;
-}) => {
+const Header = (props: props) => {
   const classes = useStyles();
-  const newTheme = useTheme;
-  console.log(newTheme);
 
   return (
     <div className={classes.root}>
@@ -51,13 +48,16 @@ const Header = (props: {
           <Typography variant='h6' className={classes.title}>
             Abdallah
           </Typography>
-          <Button color='inherit' onClick={props.isDarkTheme}>
-            <Switch
-              name='checkedB'
-              color='default'
-              inputProps={{ 'aria-label': 'primary checkbox' }}
-            />
-          </Button>
+
+          <IconButton
+            className={classes.menuButton}
+            color='inherit'
+            edge='end'
+            aria-label='menu'
+            onClick={props.isDarkTheme}
+          >
+            {props.isdark ? <Brightness4 /> : <Brightness7 />}
+          </IconButton>
         </Toolbar>
       </AppBar>
     </div>

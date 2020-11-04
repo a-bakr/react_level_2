@@ -4,7 +4,7 @@ import React, { Fragment } from 'react';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     paper: {
-      height: '50vh',
+      height: '100vh',
       borderRadius: '0',
     },
   })
