@@ -1,3 +1,27 @@
+@keyframes moveToLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(3rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveToRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-3rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 $lightGreen: #7ed56f;
 $mediumGreen: #55c57a;
 $darkGreen: #28b485;
@@ -44,6 +68,9 @@ body {
         font-size: 60px;
         letter-spacing: 35px;
         font-weight: 400;
+        animation-name: moveToRight;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
       }
 
       .sub {
@@ -51,6 +78,9 @@ body {
         font-size: 20px;
         letter-spacing: 17.4px;
         font-weight: 700;
+        animation-name: moveToLeft;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
       }
     }
   }
