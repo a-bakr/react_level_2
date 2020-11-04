@@ -1,6 +1,5 @@
 import {
   AppBar,
-  Button,
   createStyles,
   IconButton,
   makeStyles,
@@ -13,7 +12,9 @@ import React from 'react';
 
 interface props {
   isDarkTheme: any;
-  isdark: any;
+  isDark: any;
+  isLenArabic: any;
+  isArabic: any;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -54,9 +55,23 @@ const Header = (props: props) => {
             color='inherit'
             edge='end'
             aria-label='menu'
+            onClick={props.isLenArabic}
+          >
+            {props.isArabic ? (
+              <Typography variant='h6'>EN</Typography>
+            ) : (
+              <Typography variant='h6'>AR</Typography>
+            )}
+          </IconButton>
+
+          <IconButton
+            className={classes.menuButton}
+            color='inherit'
+            edge='end'
+            aria-label='menu'
             onClick={props.isDarkTheme}
           >
-            {props.isdark ? <Brightness4 /> : <Brightness7 />}
+            {props.isDark ? <Brightness4 /> : <Brightness7 />}
           </IconButton>
         </Toolbar>
       </AppBar>
