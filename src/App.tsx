@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
-import { ThemeProvider } from '@material-ui/core';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import Body from './components/Body';
 import Header from './components/Header';
-import lightTheme from './theme/lightTheme';
-import darkTheme from './theme/darkTheme';
-
-interface Props {
-  isDarkTheme: Function;
-}
 
 const App = () => {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(false);
+  const darkOrLight = () => (isDark ? 'dark' : 'light');
+
+  const theme = createMuiTheme({
+    palette: {
+      type: darkOrLight(),
+      primary: {},
+    },
+  });
 
   return (
-    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+    <ThemeProvider theme={theme}>
       <Header isDarkTheme={() => setIsDark(!isDark)} />
       <Body />
     </ThemeProvider>

@@ -10,6 +10,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import { Menu } from '@material-ui/icons';
+import { useTheme } from '@material-ui/styles';
 import React from 'react';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -32,6 +33,8 @@ const Header = (props: {
     | undefined;
 }) => {
   const classes = useStyles();
+  const newTheme = useTheme;
+  console.log(newTheme);
 
   return (
     <div className={classes.root}>
@@ -52,7 +55,7 @@ const Header = (props: {
             <Switch
               name='checkedB'
               color='default'
-              // inputProps={{ 'aria-label': 'primary checkbox' }}
+              inputProps={{ 'aria-label': 'primary checkbox' }}
             />
           </Button>
         </Toolbar>
