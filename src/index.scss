@@ -1,9 +1,22 @@
+$lighGreen: #7ed56f;
+$mediumGreen: #55c57a;
+$darGreen: #28b485;
+$light: #f7f7f7;
+$dark: #777;
+
+::-webkit-scrollbar {
+  display: none;
+}
+
 @keyframes moveToLeft {
   0% {
     opacity: 0;
     transform: translateX(3rem);
   }
-
+  80% {
+    opacity: 1;
+    transform: translateX(-1rem);
+  }
   100% {
     opacity: 1;
     transform: translateX(0);
@@ -15,73 +28,148 @@
     opacity: 0;
     transform: translateX(-3rem);
   }
-
+  80% {
+    opacity: 1;
+    transform: translateX(1rem);
+  }
   100% {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
-$lightGreen: #7ed56f;
-$mediumGreen: #55c57a;
-$darkGreen: #28b485;
+@keyframes moveToTop {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
 
 body {
-  font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  margin: 0;
-  padding: 30px;
+  font-family: 'Lato', sans-serif;
+  padding: 3rem;
   font-weight: 400;
   line-height: 1.7;
-  color: #777;
+  color: $dark;
+  box-sizing: border-box;
+}
+
+.siteBackground {
+  background-color: $light;
 }
 
 .header {
   height: 95vh;
   background-image: linear-gradient(to right bottom, #7ed56fcc, #28b485cc),
     url(./assets/images/hero.jpg);
-  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  background-size: cover;
+  background-position: top;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
   position: relative;
-  font-size: 16px;
+  font-size: 1.6rem;
+  text-align: center;
+}
 
-  .log-box {
+.header__log-box {
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}
+.header__logo {
+  height: 3.5rem;
+}
+
+.heading {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.heading__primary {
+  color: $light;
+  text-transform: uppercase;
+  margin-bottom: 6rem;
+}
+
+.heading__primary--main {
+  display: block;
+  font-size: 6rem;
+  letter-spacing: 3.5rem;
+  font-weight: 400;
+  animation: 1s moveToRight ease-out;
+}
+
+.heading__primary--sub {
+  display: block;
+  font-size: 2rem;
+  letter-spacing: 1.75rem;
+  font-weight: 700;
+  animation: 1s moveToLeft ease-out;
+}
+
+.btn:link,
+.btn:active {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  border-radius: 10rem;
+  font-weight: 700;
+  position: relative;
+
+  &::after {
+    content: '';
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10rem;
+    display: inline-block;
+    z-index: -1;
+    transition: all 0.4s;
   }
 
-  .heading {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  &:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 
-    .primary {
-      color: #fff;
-      text-transform: uppercase;
-
-      .main {
-        display: block;
-        font-size: 60px;
-        letter-spacing: 35px;
-        font-weight: 400;
-        animation-name: moveToRight;
-        animation-duration: 1s;
-        animation-timing-function: ease-out;
-      }
-
-      .sub {
-        display: block;
-        font-size: 20px;
-        letter-spacing: 17.4px;
-        font-weight: 700;
-        animation-name: moveToLeft;
-        animation-duration: 1s;
-        animation-timing-function: ease-out;
-      }
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
     }
   }
+
+  &:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.2);
+  }
+}
+
+.btn--white {
+  color: $dark;
+  background-color: $light;
+  &::after {
+    background-color: $light;
+  }
+}
+
+.btn--animate {
+  animation: moveToTop 1s ease-out 0.75s backwards;
 }

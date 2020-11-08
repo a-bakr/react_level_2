@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Header from './components/Header';
 
 function App() {
   return (
-    <Fragment>
+    <div className='siteBackground'>
       <Header />
-    </Fragment>
+    </div>
   );
 }
 
